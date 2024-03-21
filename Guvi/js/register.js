@@ -1,15 +1,3 @@
-// Sign Up Elements
-const s_form = document.querySelector("#s_form");
-const s_name = document.querySelector("#name");
-const s_email = document.querySelector("#s_email");
-const s_mobile = document.querySelector("#s_mobile");
-const s_password = document.querySelector("#s_password");
-const s_check_password = document.querySelector("#s_check_password");
-const s_msg = document.querySelector("#s_msg");
-const submit = document.querySelector("#submit");
-
-
-
 function sub(){
     e.preventDefault();
     console.log(s_name.value);
