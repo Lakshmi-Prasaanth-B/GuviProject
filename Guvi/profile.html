@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Profile</h1>
+        <div class="img">
+            <h3 id="usrName">User Name</h3>
+            <img src="./Images/dp1.png" alt="" srcset="">
+        </div>
+        <p id="close"><a href="index.html">X</a></p>
+    </div>
+    <div class="form">
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="active">
+            <p class="data" id="dname">Lakshmi Prasaanth</p>
+        </div><br>
+        <div class="dob">
+            <label for="dob">Date-of-Birth</label>
+            <input type="date" id="dob" class="active">
+            <p class="data" id="ddob">13-01-2004</p>
+        </div><br>
+        <div class="location">
+            <label for="location">Location</label>
+            <textarea name="address" id="location" cols="30" rows="4" class="active"></textarea>
+            <p class="data" id="dlocation">Tiruppur</p>
+        </div><br>
+        <div class="role">
+            <label for="role">Role</label>
+            <input type="text" id="role" class="active">
+            <p class="data" id="drole">Web Developer</p>
+        </div><br>
+        <div class="about">
+            <label for="about">About</label>
+            <textarea name="about" id="about" cols="30" rows="4" class="active"></textarea>
+            <p class="data" i="dabout">Aeronautical Engineer</p>
+        </div><br>
+        <div class="contact">
+            <label for="contact">Contact</label>
+            <input type="number" id="contact" class="active">
+            <p class="data" id="dcontact">8610041389</p>
+        </div><br>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="active">
+            <p class="data" id="demail">lakshmiprasaanth001@gmail.com</p>
+        </div>
+        
+        <div class="btns">
+            <a id="edit">Edit Profile</p>
+            <a id="update" class="active">Update Profile</p>
+        </div>
+    </div>
+    <script src="./js/profile.js"></script>
+    <script>
+        Pro();
+    </script>
+</body>
+</html>

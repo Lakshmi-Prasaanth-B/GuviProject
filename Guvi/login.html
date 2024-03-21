@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- <div class="header"></div> -->
+    <div class="body">
+        <div class="container">
+            <div class="head">
+                <h2>Login</h2>
+            </div>
+            <div class="form">
+                <!-- <form action="php/login.php" method="POST" id="form"> -->
+                <form id="login-form">
+                    <div id="msg" value="<?php echo $msg ?>"></div>
+                    <div class="element">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="element">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                    </div>
+                    <div class="element">
+                        <a href="" id="forget">Forget password?</a>
+                        <!-- <input id="submit" value="Submit" > -->
+                        <input type="submit" value="Submit" id="logindata">
+                        <!-- <button id="submit" onclick="sendData()">Submit</button> -->
+                        <!-- <button id="submit">Submit</button> -->
+                        <!-- <button type="submit" id="login">Next</button> -->
+                    </div>
+                    <div class="element">
+                        <p id="qn">New User ? <a href="register.html">Sign Up</a></p>
+                        <p>Having any trouble in Login? <a href="">Contact Us</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="footer"></div> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
