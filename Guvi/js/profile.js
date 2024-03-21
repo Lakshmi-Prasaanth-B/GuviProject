@@ -42,12 +42,3 @@ let about = document.getElementById('dabout');
 let contact = document.getElementById('dcontact');
 let email = document.getElementById('demail');
 
-function Pro(){
-    name.innerHTML="Lakshmi Prasaanth B";
-    dob.innerHTML="13-01-2004";
-    location.innerHTML="Tiruppur";
-    role.innerHTML="Developer";
-    about.innerHTML="Engineer";
-    contact.innerHTML="8610041389";
-    email.innerHTML="lakshmiprasaanth001@gmail.com";
-}
