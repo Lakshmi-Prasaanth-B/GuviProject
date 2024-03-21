@@ -1,5 +1,5 @@
 <?php
-    $con = new mysqli('localhost','root','King','Guvi');
+    $con = new mysqli('localhost','root','password','Guvi');
     if($con->connect_errno){
         echo $con->connect_error;
         die();
