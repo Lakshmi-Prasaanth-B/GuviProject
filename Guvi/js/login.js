@@ -1,43 +1,43 @@
+console.log("JS Loaded");
 
-let email,password;
-$(document).ready(function(){
-    console.log("Document Ready");
-    
-    $('#login-form').submit(function(e){
-        e.preventDefault();
-        
-        email = $("#email").val();
-        password = $("#password").val();
-        const formData = {
-            'email': email,
-            'password': password
-        };
-        
-        const encodedData = $.param(formData);
-        
-        $.ajax({
-            type: "POST",
-            url: "php/login.php",
-            data: encodedData,
-            contentType: "application/x-www-form-urlencoded",
-            success: function(response){
+$(()=>{
+  $("#submit").click(function(ev){
+    ev.preventDefault();
+    let form = $("#login-form");
+    console.log(form);
+    let data = form.serialize();
+    console.log(data);
 
-                console.log(response.trim());
-                    if (response.trim() == "success"){
-                        const ProData = JSON.parse(localStorage.getItem("profiles"));
-                        let profiles = localStorage.getItem("profiles") !== null ? ProData : [];
-                        const profile = formData;
-                        profiles.push(profile);
-                        
-                        window.location.replace("profile.html");
-                    }else{
-                        alert("Invalid User, redirecting to Register")
-                        window.location.replace("./register.html")
-                    }
-            },
-            error: function(xhr, status, error){
-                console.error("AJAX request failed:", status, error);
-            }
-        });
+    $.ajax({
+      type: "POST",
+      url: 'php/connect.php',
+      data: data,
+      success:function(response,status,error){
+        let JSONdata = JSON.stringify(response);
+        console.log(JSONdata);
+        console.log("Response : "+response);
+        
+        var responseData = JSON.parse(JSONdata);
+        if(responseData.status === 'success'){
+          $("#msg").text(responseData.name);
+          alert("Form Submitted Successfully");
+          $("#status").text(responseData.status);
+          $("#error").text(responseData.error);
+          sessionStorage.setItem('user',responseData);
+          console.log("Session Storage Success");
+          alert(responseData.message);
+          window.location.replace("profile.html?user="+responseData.user+"&email="+responseData.email+"&contact="+responseData.contact);
+        }
+        else if(responseData.status === 'error'){
+          alert(responseData.message);
+        }
+      },
+      error:function(response,status,error){
+        console.log("Response : "+response);
+        console.log("Status : "+status);
+        console.log("Error : "+error);
+      }
     });
+
+  });
 });
