@@ -1,9 +1,15 @@
 <?php
-    require 'vender/autoload.php';
-    $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
-    $database = $mongoClient->selectDatabase('users');
-    $collection = $database->selectCollection('profiles');
-    $result = $collection->find();
-    foreach($result as $document){
-        echo $document;
+    $host = 'localhost';
+    $port = '27017';
+    $name = 'Guvi';
+
+    try{
+        $mongoClient = new MongoDB\Client("mongodb://$host:$port");
+        $database = $mongoClient->$name;
+        echo "Connected to MongoDB Server successfully";
     }
+    catch(MongoDB\Driver\Exception\Exception $e){
+        echo "Error Connecting to MongoDb Server: ".$e->getMessage();
+        exit;
+    }
+?>
