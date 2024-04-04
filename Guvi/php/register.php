@@ -1,73 +1,94 @@
 <?php
-    $con = new mysqli('localhost','root','password','Guvi');
+    header('Content-Type: application/json');
+    $con = new mysqli('localhost','root','King','Guvi');
     if($con->connect_errno){
         echo $con->connect_error;
         die();
     }
     else{
-        echo "Database Connnected\n";
-        
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $name = $_POST['name'];
-            $s_email = $_POST['s_email'];
-            $s_mobile = $_POST['s_mobile'];
-            $s_password = $_POST['s_password'];
-            $s_check_password = $_POST['s_check_password'];
-            
-            $flag = 0;
-            $get = "select * from users";
-            $res = $con->query($get);
-            if($res->num_rows > 0){
-                if($s_password===$s_check_password){
-
-                    while($row = $res->fetch_assoc()){
-                        if($s_email==$row["email"]){
-                            $flag = 1;
-                            echo "Email already Exists";
-                            header("Location: ../register.html?email=true");
-                            exit();
+        // echo connection
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $rawData = file_get_contents('php://input');
+            parse_str($rawData,$dataArray);
+            $jsonData = json_encode($dataArray);
+            $name = $dataArray['name'];
+            $email = $dataArray['s_email'];
+            $contact = $dataArray['s_mobile'];
+            $password = $dataArray['s_password'];
+            $checkPassword = $dataArray['s_check_password'];
+            if($password == $checkPassword){
+                $flag = 0;
+                $e = 1;
+                $c = 1;
+                $stmt = "select * from users";
+                $resData = $con->query($stmt);
+                if($resData->num_rows>0){
+                    while($row = $resData->fetch_assoc()){
+                        if($email==$row["email"]){
+                            $e = 0;
                         }
-                        else if($s_mobile==$row["mobile"]){
-                            $s_msg = $_GET['msg'];
-                            $flag = 1;
-                            echo "Mobile Number already Exists";
-                            header("Location: ../register.html?number=true");
-                            die();
+                        if($contact==$row["mobile"]){
+                            $c = 0;
+                        }
+                        if($e==0 && $c==0){
+                            break;
                         }
                     }
-                    if($flag==0){
-                        $stmt = "insert into users(name, email, mobile, password) values('$name','$s_email','$s_mobile','$s_password')";
-                        if($con->query($stmt)){
-                            echo "Data Inserted Successfully";
-                            header("Location: ../login.html",true);
+                    if($e==1 && $c==1){
+                        // $mysqli -> autocommit(FALSE);
+                        $insertQry = 'insert into users (name,email,mobile,password) values ("'.$name.'","'.$email.'","'.$contact.'","'.$password.'")';
+                        $con -> query($insertQry);
+                        if(!$con -> commit()){
+                            $response = array(
+                                'status' => 'error',
+                                'message' => 'Unable to Add User'
+                            );
+                            echo json_encode($response);
                         }
                         else{
-                            echo "Data Insert Failed!";
+                            $response = array(
+                                'status' => 'success',
+                                'user' => $name,
+                                'message' => 'User Added Successfully'
+                            );
+                            echo json_encode($response);
                         }
+                    }
+                    else if($e==0){
+                        $response = array(
+                            'status' => 'error',
+                            'message' => 'Email Already Exists'
+                        );
+                        echo json_encode($response);
+                    }
+                    else if($c==0){
+                        $response = array(
+                            'status' => 'error',
+                            'message' => 'Mobile Number Already Exists'
+                        );
+                        echo json_encode($response);
                     }
                 }
                 else{
-                    echo '<script>alert("Password does not match")</script>';
+                    $response = array(
+                        'status' => 'error',
+                        'email' => $email,
+                        'password' => $password,
+                        'message' => 'No Datas Found'
+                    );
+                    echo json_encode($response);
                 }
             }
             else{
-                $stmt = "insert into users(name, email, mobile, password) values('$name','$s_email','$s_mobile','$s_password')";
-                if($con->query($stmt)){
-                    echo "Data Inserted Successfully";
-                    header("Location: ../login.html",true);
-                }
-                else{
-                    echo "Data Insert Failed!!";
-                }
+                $response = array(
+                    'status' => 'error',
+                    'message' => 'Password does not match'
+                );
+                echo json_encode($response);
             }
         }
         else{
-            echo "Request method was not Post<br>";
-            echo "Request Method : ". $_SERVER["REQUEST_METHOD"];
-            var_dump($_POST);
+            echo "Request Method was not POST..!\n";
         }
     }
-
-?>
-
-
+    ?>
