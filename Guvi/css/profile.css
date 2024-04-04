@@ -141,8 +141,22 @@ textarea.active{
 }
 
 /* Footer */
-
-
+.footer{
+    position: sticky;
+    bottom: 0px;
+    min-height:60px;
+    background-color: rgba(46, 38, 38, 0.909);
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.author{
+    color: white;
+}
+.author a{
+    color:rgba(78, 205, 50, 0.958);
+    text-decoration: none;
+}
 
 
 
