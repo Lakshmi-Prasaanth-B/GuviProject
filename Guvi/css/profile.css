@@ -5,6 +5,7 @@
 }
 body{
     margin-top:10px;
+    /* min-width:410px; */
     /* color: #ffffffc7; */
 }
 .header{
@@ -49,47 +50,70 @@ body{
     background-color: rgb(255, 0, 0);
 }
 .form{
+    position: relative;
+}
+.formElements{
     border:1px solid;
     height:70vh;
+    /* overflow-x: hidden; */
     overflow-y: scroll;
     padding: 20px;
     position:relative;
+    display: flex;
+    flex-direction: column;
     /* overflow-x: hidden; */
     /* background-color: rgb(73, 65, 65); */
 }
-.form div{
+
+.formElements div{
     max-width:450px;
     width:75vw;
 }
-.form div p{
+.formElements div p{
     min-width:80%;
     margin-left:25px;
     /* background-color: red; */
 }
-.form div label{
+.formElements div label{
     min-width:125px;
     /* background-color: green; */
 }
-.form div{
+.formElements div{
     display:flex;
     justify-content: space-between;
 }
 input,textarea{
-    min-width: 150px;
+    /* min-width: 150px; */
+    min-width: 80%;
+    min-height:35px;
+    width:90%;
     /* min-width:50%; */
-    /* background-color: greenyellow; */
     border:1px solid black;
+    margin-left: 0px;
+    padding:7px 11px;
+    border-radius: 5px;
+}
+input:active,textarea:active{
+    border:2px solid black;
 }
 .form div p{
     display:inline-block;
+    border:2px solid #111;
 }
 .btns{
     position:absolute;
     bottom: 5px;
-    left:50%;
-    transform: translateX(-50%);
+    left: 600px;
+    /* right:30px; */
+    /* left:50%; */
+    /* transform: translateX(-50%); */
     user-select: none;
     cursor: pointer;
+    /* background-color: red; */
+    display:inline-block;
+    height:25px;
+    width: 130px;
+
 }
 .btns a{
     padding:5px;
@@ -108,12 +132,28 @@ input,textarea{
     display: none;
 }
 input.active{
-    display:none;
+    pointer-events: none;
+    background-color: rgba(229, 229, 229, 0.842);
 }
 textarea.active{
-    display:none;
+    pointer-events: none;
+    background-color: rgba(229, 229, 229, 0.842);
 }
-.data.active{
-    display: none;
-}
+
 /* Footer */
+
+
+
+
+
+/* General */
+::-webkit-scrollbar{
+    width:4px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(35, 24, 35, 0.515);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track{
+    background-color: #f0ffff;
+}
