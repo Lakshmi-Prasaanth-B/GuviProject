@@ -5,44 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 </head>
 <body>
-    <!-- <div class="header"></div> -->
     <div class="body">
+        <div id="msg"></div>
         <div class="container">
             <div class="head">
                 <h2>Login</h2>
             </div>
             <div class="form">
-                <!-- <form action="php/login.php" method="POST" id="form"> -->
                 <form id="login-form">
-                    <div id="msg" value="<?php echo $msg ?>"></div>
                     <div class="element">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Enter your email" required>
+                        <input type="text" name="email" id="email" placeholder="Enter your email">
                     </div>
                     <div class="element">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                        <input type="password" name="password" id="password" placeholder="Enter your Password">
                     </div>
                     <div class="element">
                         <a href="" id="forget">Forget password?</a>
-                        <!-- <input id="submit" value="Submit" > -->
-                        <input type="submit" value="Submit" id="logindata">
-                        <!-- <button id="submit" onclick="sendData()">Submit</button> -->
-                        <!-- <button id="submit">Submit</button> -->
-                        <!-- <button type="submit" id="login">Next</button> -->
+                        <input type="submit" value="Submit" id="submit">
                     </div>
                     <div class="element">
-                        <p id="qn">New User ? <a href="register.html">Sign Up</a></p>
+                        <p id="qn">New User ? <a href="./register.html">Sign Up</a></p>
                         <p>Having any trouble in Login? <a href="">Contact Us</a></p>
                     </div>
                 </form>
             </div>
+            <div id="status"></div>
         </div>
+        <div id="error"></div>
     </div>
-    <!-- <div class="footer"></div> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
