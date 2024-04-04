@@ -5,25 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        function display_msg(){
-            var msg = document.getElementById('s_msg');
-            var urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.get('success')==='true'){
-                msg.innerText = "Data Loaded";
-            }
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 </head>
 <body>
     <!-- <div class="header"></div> -->
-    <div class="body" onload="display_msg()">
+    <div class="body">
         <div class="container">
             <div class="head">
                 <h2>Sign Up</h2>
             </div>
             <div class="s_form">
-                <form id="s_form">
+                <form id="register-form">
                 <!-- <form action="php/register.php" method="POST" id="s_form"> -->
                     <div id="s_msg"></div>
                     <!-- <?php include 'connect1.php'; ?> -->
@@ -49,10 +42,10 @@
                     </div>
                     <div class="element">
                         <!-- <button type="submit">Next</button> -->
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" id="addUser">
                     </div>
                     <div class="element">
-                        <p id="qn">Already a User ? <a href="login.html">Log In</a></p>
+                        <p id="qn">Already a User ? <a href="./index.html">Log In</a></p>
                         <p>Having any trouble in Login? <a href="">Contact Us</a></p>
                     </div>
                 </form>
@@ -61,7 +54,7 @@
     </div>
     <!-- <div class="footer"></div> -->
 
-    <script src="js/register.js"></script>
+    <script src="./js/register.js"></script>
     <script>
         const URL = window.location.href;
         const searchParams = new URLSearchParams(URL);
